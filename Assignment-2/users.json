@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Aditya Pathak",
+    "age": 22,
+    "address": "SIT back gate extension road Tumkur 572103",
+    "roll": 3,
+    "courses": [
+      "A",
+      "E",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "name": "Amit Shahwal",
+    "age": 22,
+    "address": "SIT basaveshwara hostel Tumkur 572103",
+    "roll": 63,
+    "courses": [
+      "E",
+      "C",
+      "D",
+      "F"
+    ]
+  }
+]
