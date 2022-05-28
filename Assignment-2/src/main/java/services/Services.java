@@ -1,9 +1,11 @@
 package services;
 
+import models.Display;
 import models.User;
 import utility.UtilityClass;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -15,11 +17,11 @@ public class Services {
         List<User> users = new ArrayList<>();
         try (FileReader reader = new FileReader(filePath)) {
             int i;
-            String jsonString = "";
+            StringBuilder jsonString = new StringBuilder();
             while ((i = reader.read()) != -1) {
-                jsonString += (char)i;
+                jsonString.append((char) i);
             }
-            users = UtilityClass.Decode(jsonString);
+            users = UtilityClass.Decode(jsonString.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -48,8 +50,11 @@ public class Services {
         users.removeIf(user -> user.getRoll() == roll);
     }
 
-    public static void DisplayUsers(List<User> users) {
-
+    public static void DisplayUsers(List<User> users, Display content) {
+        System.out.print(content.getUserDetailHeader());
+        for (User user : users) {
+            System.out.printf(content.getUserDetails(), user.getName(), user.getRoll(), user.getAge(), user.getAddress(), Arrays.toString(user.getCourses()));
+        }
     }
 
     public static void AddUser(List<User> users, List<Integer> rolls, Scanner sc) {

@@ -1,5 +1,6 @@
 package services;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -11,6 +12,8 @@ public class UserService {
             name = sc.nextLine();
             if (ValidationService.ValidateName(name)) {
                 return name;
+            } else {
+                System.out.println("Invalid Name");
             }
         }
     }
@@ -22,6 +25,8 @@ public class UserService {
             address = sc.nextLine();
             if (ValidationService.ValidateAddress(address)) {
                 return address;
+            } else {
+                System.out.println("Invalid Address");
             }
         }
     }
@@ -29,10 +34,15 @@ public class UserService {
     public static int GetUserAge(Scanner sc) {
         int age;
         while (true) {
-            System.out.print("Enter Age: ");
-            age = sc.nextInt();
-            if (ValidationService.ValidateAge(age)) {
-                return age;
+            try {
+                System.out.print("Enter Age: ");
+                age = sc.nextInt();
+                if (ValidationService.ValidateAge(age)) {
+                    return age;
+                }
+            } catch (InputMismatchException exception) {
+                System.out.println("Input type mismatch");
+                sc.nextLine();
             }
         }
     }
@@ -40,10 +50,15 @@ public class UserService {
     public static int GetUserRoll(List<Integer> rolls, Scanner sc) {
         int roll;
         while (true) {
-            System.out.print("Enter Roll: ");
-            roll = sc.nextInt();
-            if (ValidationService.ValidateRoll(rolls, roll)) {
-                return roll;
+            try {
+                System.out.print("Enter Roll: ");
+                roll = sc.nextInt();
+                if (ValidationService.ValidateRoll(rolls, roll)) {
+                    return roll;
+                }
+            } catch (InputMismatchException exception) {
+                System.out.println("Input type mismatch");
+                sc.nextLine();
             }
         }
     }

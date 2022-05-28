@@ -26,21 +26,31 @@ public class MainClass {
 
             switch (choice) {
                 case 1:
+                    // Add User
                     sc.nextLine();
                     Services.AddUser(users, rolls, sc);
                     break;
                 case 2:
-                    Services.DisplayUsers(users);
+                    // Display User
+                    Services.DisplayUsers(users, content);
                     break;
                 case 3:
+                    // Delete User
                     int roll;
+                    System.out.print(content.getInputRoll());
                     roll = sc.nextInt();
-                    Services.DeleteUser(users, roll);
+                    if (rolls.contains(roll)) {
+                        Services.DeleteUser(users, roll);
+                    } else {
+                        System.out.println(content.getInvalidRoll());
+                    }
                     break;
                 case 4:
+                    // Save Details
                     Services.SaveDetails(users, filePath);
                     break;
                 case 5:
+                    // Exit
                     System.exit(0);
                 default:
                     System.out.println(content.getInvalidChoice());

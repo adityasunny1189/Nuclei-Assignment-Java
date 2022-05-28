@@ -30,4 +30,20 @@ public class User {
     public int getRoll() {
         return roll;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public char[] getCourses() {
+        return courses;
+    }
+
+    public int getAge() {
+        return age;
+    }
 }
