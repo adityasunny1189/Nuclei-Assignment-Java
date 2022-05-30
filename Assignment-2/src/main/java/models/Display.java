@@ -1,43 +1,83 @@
 package models;
 
+/**
+ * display class.
+ */
 public class Display {
-    private final String displayDetails;
-    private final String invalidChoice;
-    private final String userDetailHeader;
-    private final String userDetails;
-    private final String invalidRoll;
-    private final String inputRoll;
+  /**
+   * display details.
+   */
+  private final String displayDetails;
 
-    public Display() {
-        this.displayDetails = "Options:\n1. Add User\n2. Display User\n3. Delete User\n4. Save Details\n5. Exit\nEnter your choice: ";
-        this.invalidChoice = "Invalid Choice";
-        this.userDetailHeader = "Name\tRoll\tAge\tAddress\tCourses\n";
-        this.userDetails = "%s\t%d\t%d\t%s\t%s\n";
-        this.invalidRoll = "Invalid roll number";
-        this.inputRoll = "Enter roll no: ";
-    }
+  /**
+   * invalid choice.
+   */
+  private final String invalidChoice;
 
-    public String getDisplayDetails() {
-        return displayDetails;
-    }
+  /**
+   * user details header.
+   */
+  private final String userDetailHeader;
 
-    public String getInvalidChoice() {
-        return invalidChoice;
-    }
+  /**
+   * user details.
+   */
+  private final String userDetails;
 
-    public String getUserDetails() {
-        return userDetails;
-    }
+  /**
+   * invalid roll.
+   */
+  private final String invalidRoll;
 
-    public String getUserDetailHeader() {
-        return userDetailHeader;
-    }
+  /**
+   * input roll.
+   */
+  private final String inputRoll;
 
-    public String getInvalidRoll() {
-        return invalidRoll;
-    }
+  /**
+   * display users by.
+   */
+  private final String displayUserBy;
 
-    public String getInputRoll() {
-        return inputRoll;
-    }
+  /**
+   * Display constructor.
+   *
+   */
+  public Display() {
+    this.displayDetails = "Options:\n1. Add\n2. Display\n3. Delete\n4. Save\n5. Exit\nChoice: ";
+    this.invalidChoice = "Invalid Choice";
+    this.userDetailHeader = "Name\tRoll\tAge\tAddress\tCourses\n";
+    this.userDetails = "%s\t%d\t%d\t%s\t%s\n";
+    this.invalidRoll = "Invalid roll number";
+    this.inputRoll = "Enter roll no: ";
+    this.displayUserBy = "Display By \n1. Name\n2. Age\n3. Roll\nChoice: ";
+  }
+
+  public String getDisplayUserBy() {
+    return displayUserBy;
+  }
+
+  public String getDisplayDetails() {
+    return displayDetails;
+  }
+
+  public String getInvalidChoice() {
+    return invalidChoice;
+  }
+
+  public String getUserDetails() {
+    return userDetails;
+  }
+
+  public String getUserDetailHeader() {
+    return userDetailHeader;
+  }
+
+  public String getInvalidRoll() {
+    return invalidRoll;
+  }
+
+  public String getInputRoll() {
+    return inputRoll;
+  }
 }
