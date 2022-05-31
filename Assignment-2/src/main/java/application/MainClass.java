@@ -23,13 +23,10 @@ public final class MainClass {
   public static void main(String[] args) {
     final String filePath = "users.json";
 
-    // load users from the file
     final List<UserClass> users = ServicesHelper.loadUsers(filePath);
 
-    // get all occupied roll numbers
     final List<Integer> rolls = ServicesHelper.loadRollNum(users);
 
-    // all the static content
     final Display content = new Display();
 
     boolean flag = true;
