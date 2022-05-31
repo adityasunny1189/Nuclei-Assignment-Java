@@ -85,12 +85,16 @@ public final class ServicesHelper {
 
   /**
    * display all user.
-   * @param userClasses represents users
+   * @param users represents users
    * @param content represents content
    */
-  public static void displayUsers(List<UserClass> userClasses, Display content) {
+  public static void displayUsers(List<UserClass> users, Display content, Scanner sc) {
+    int sortChoice;
+    System.out.print(content.getDisplayUserBy());
+    sortChoice = sc.nextInt();
+    SortServiceHelper.sort(sortChoice, users);
     System.out.print(content.getUserDetailHeader());
-    for (final UserClass userClass : userClasses) {
+    for (final UserClass userClass : users) {
       System.out.printf(content.getUserDetails(),
           userClass.getName(), userClass.getRoll(),
           userClass.getAge(), userClass.getAddress(),
