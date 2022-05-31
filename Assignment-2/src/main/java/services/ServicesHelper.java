@@ -9,7 +9,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-import models.Display;
+import models.DisplayHelper;
 import models.UserClass;
 import utility.UtilityClassHelper;
 
@@ -86,16 +86,15 @@ public final class ServicesHelper {
   /**
    * display all user.
    * @param users represents users
-   * @param content represents content
    */
-  public static void displayUsers(List<UserClass> users, Display content, Scanner sc) {
+  public static void displayUsers(List<UserClass> users, Scanner sc) {
     int sortChoice;
-    System.out.print(content.getDisplayUserBy());
+    System.out.print(DisplayHelper.DISPLAY_USER_BY);
     sortChoice = sc.nextInt();
     SortServiceHelper.sort(sortChoice, users);
-    System.out.print(content.getUserDetailHeader());
+    System.out.print(DisplayHelper.USER_DETAIL_HEADER);
     for (final UserClass userClass : users) {
-      System.out.printf(content.getUserDetails(),
+      System.out.printf(DisplayHelper.USER_DETAILS,
           userClass.getName(), userClass.getRoll(),
           userClass.getAge(), userClass.getAddress(),
           Arrays.toString(userClass.getCourses()));
@@ -138,7 +137,7 @@ public final class ServicesHelper {
   /**
    * get roll for deletion.
    */
-  public static int getRollForDeletion(Scanner sc, List<Integer> rolls, Display content) {
+  public static int getRollForDeletion(Scanner sc, List<Integer> rolls) {
     int roll;
     while (true) {
       try {
@@ -147,7 +146,7 @@ public final class ServicesHelper {
         if (ValidationServiceHelper.validateRollForDeletion(rolls, roll)) {
           return roll;
         } else {
-          System.out.println(content.getInvalidRoll());
+          System.out.println(DisplayHelper.INVALID_ROLL_NUMBER);
         }
       } catch (InputMismatchException exception) {
         System.out.println("Input type mismatch");

@@ -3,22 +3,20 @@ package application;
 import java.util.List;
 import java.util.Scanner;
 
-import models.Display;
+import models.DisplayHelper;
 import models.UserClass;
 import services.ServicesHelper;
-import services.SortServiceHelper;
 
 /**
  * App class.
  */
-public final class AppClass {
-  private AppClass() {
+public final class AppClassHelper {
+  private AppClassHelper() {
 
   }
 
   /**
    * start function.
-   * @param args represents args
    */
   public static void startApp() {
     final String filePath = "users.json";
@@ -27,13 +25,11 @@ public final class AppClass {
 
     final List<Integer> rolls = ServicesHelper.loadRollNum(users);
 
-    final Display content = new Display();
-
     boolean flag = true;
     final Scanner sc = new Scanner(System.in);
     while (flag) {
       int choice;
-      System.out.print(content.getDisplayDetails());
+      System.out.print(DisplayHelper.DISPLAY_DETAILS);
       choice = sc.nextInt();
 
       switch (choice) {
@@ -42,11 +38,11 @@ public final class AppClass {
           ServicesHelper.addUser(users, rolls, sc);
           break;
         case 2:
-          ServicesHelper.displayUsers(users, content, sc);
+          ServicesHelper.displayUsers(users, sc);
           break;
         case 3:
           int roll;
-          roll = ServicesHelper.getRollForDeletion(sc, rolls, content);
+          roll = ServicesHelper.getRollForDeletion(sc, rolls);
           ServicesHelper.deleteUser(users, roll);
           break;
         case 4:
@@ -57,7 +53,7 @@ public final class AppClass {
           flag = false;
           break;
         default:
-          System.out.println(content.getInvalidChoice());
+          System.out.println(DisplayHelper.INVALID_CHOICE);
       }
     }
   }
