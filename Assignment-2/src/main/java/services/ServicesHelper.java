@@ -9,14 +9,14 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-import models.DisplayHelper;
-import models.UserClass;
-import utility.UtilityClassHelper;
+import models.DisplayConstants;
+import models.User;
+import utility.ParserUtility;
 
 /**
  * service class.
  */
-public final class ServicesHelper {
+public class ServicesHelper {
   private ServicesHelper() {
 
   }
@@ -26,8 +26,8 @@ public final class ServicesHelper {
    * @param filePath represents file path
    *
    */
-  public static List<UserClass> loadUsers(String filePath) {
-    List<UserClass> userClasses = new ArrayList<>();
+  public static List<User> loadUsers(String filePath) {
+    List<User> users = new ArrayList<>();
     try {
       final FileReader reader = new FileReader(filePath);
       int index;
@@ -37,34 +37,34 @@ public final class ServicesHelper {
         jsonString.append((char) index);
         index = reader.read();
       }
-      userClasses = UtilityClassHelper.decode(jsonString.toString());
+      users = ParserUtility.decode(jsonString.toString());
       reader.close();
     } catch (IOException exception) {
       System.out.println("error" + exception);
     }
-    return userClasses;
+    return users;
   }
 
   /**
    * load roll number.
-   * @param userClasses represents users
+   * @param users represents users
    *
    */
-  public static List<Integer> loadRollNum(List<UserClass> userClasses) {
+  public static List<Integer> loadRollNum(List<User> users) {
     final List<Integer> rolls = new ArrayList<>();
-    for (final UserClass userClass : userClasses) {
-      rolls.add(userClass.getRoll());
+    for (final User user : users) {
+      rolls.add(user.getRoll());
     }
     return rolls;
   }
 
   /**
    * save user details to memory.
-   * @param userClasses represents users
+   * @param users represents users
    * @param filePath represents file path
    */
-  public static void saveDetails(List<UserClass> userClasses, String filePath) {
-    final String json = UtilityClassHelper.encode(userClasses);
+  public static void saveDetails(List<User> users, String filePath) {
+    final String json = ParserUtility.encode(users);
     try {
       final FileWriter file = new FileWriter(filePath);
       file.write(json);
@@ -76,38 +76,38 @@ public final class ServicesHelper {
 
   /**
    * delete user.
-   * @param userClasses represents users
+   * @param users represents users
    * @param roll represents roll
    */
-  public static void deleteUser(List<UserClass> userClasses, int roll) {
-    userClasses.removeIf(userClass -> userClass.getRoll() == roll);
+  public static void deleteUser(List<User> users, int roll) {
+    users.removeIf(userClass -> userClass.getRoll() == roll);
   }
 
   /**
    * display all user.
    * @param users represents users
    */
-  public static void displayUsers(List<UserClass> users, Scanner sc) {
+  public static void displayUsers(List<User> users, Scanner sc) {
     int sortChoice;
-    System.out.print(DisplayHelper.DISPLAY_USER_BY);
+    System.out.print(DisplayConstants.DISPLAY_USER_BY);
     sortChoice = sc.nextInt();
     SortServiceHelper.sort(sortChoice, users);
-    System.out.print(DisplayHelper.USER_DETAIL_HEADER);
-    for (final UserClass userClass : users) {
-      System.out.printf(DisplayHelper.USER_DETAILS,
-          userClass.getName(), userClass.getRoll(),
-          userClass.getAge(), userClass.getAddress(),
-          Arrays.toString(userClass.getCourses()));
+    System.out.print(DisplayConstants.USER_DETAIL_HEADER);
+    for (final User user : users) {
+      System.out.printf(DisplayConstants.USER_DETAILS,
+          user.getName(), user.getRoll(),
+          user.getAge(), user.getAddress(),
+          Arrays.toString(user.getCourses()));
     }
   }
 
   /**
    * add new user.
-   * @param userClasses represents users
+   * @param users represents users
    * @param rolls represents rolls
    * @param sc represents scanner
    */
-  public static void addUser(List<UserClass> userClasses, List<Integer> rolls, Scanner sc) {
+  public static void addUser(List<User> users, List<Integer> rolls, Scanner sc) {
     String name;
     name = UserServiceHelper.getUserName(sc);
 
@@ -123,15 +123,15 @@ public final class ServicesHelper {
     char[] courses;
     courses = UserServiceHelper.getUserCourses(sc);
 
-    final UserClass userClass = new UserClass();
-    userClass.setName(name);
-    userClass.setAddress(address);
-    userClass.setAge(age);
-    userClass.setRoll(roll);
-    userClass.setCourses(courses);
+    final User user = new User();
+    user.setName(name);
+    user.setAddress(address);
+    user.setAge(age);
+    user.setRoll(roll);
+    user.setCourses(courses);
 
-    userClasses.add(userClass);
-    rolls.add(userClass.getRoll());
+    users.add(user);
+    rolls.add(user.getRoll());
   }
 
   /**
@@ -141,15 +141,15 @@ public final class ServicesHelper {
     int roll;
     while (true) {
       try {
-        System.out.print("Enter Roll: ");
+        System.out.print(DisplayConstants.ENTER_ROLL_NO);
         roll = sc.nextInt();
         if (ValidationServiceHelper.validateRollForDeletion(rolls, roll)) {
           return roll;
         } else {
-          System.out.println(DisplayHelper.INVALID_ROLL_NUMBER);
+          System.out.println(DisplayConstants.INVALID_ROLL_NUMBER);
         }
       } catch (InputMismatchException exception) {
-        System.out.println("Input type mismatch");
+        System.out.println(DisplayConstants.INPUT_TYPE_MISMATCH);
         sc.nextLine();
       }
     }

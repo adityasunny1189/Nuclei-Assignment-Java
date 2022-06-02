@@ -2,12 +2,13 @@ package services;
 
 import java.util.Comparator;
 import java.util.List;
-import models.UserClass;
+
+import models.User;
 
 /**
  * sorting service class.
  */
-public final class SortingChoicesServiceHelper {
+public class SortingChoicesServiceHelper {
   private SortingChoicesServiceHelper() {
 
   }
@@ -16,8 +17,8 @@ public final class SortingChoicesServiceHelper {
    * sort by name.
    * @param users represents users
    */
-  public static void sortByName(List<UserClass> users) {
-    final Comparator<UserClass> byName = Comparator.comparing(UserClass::getName);
+  public static void sortByName(List<User> users) {
+    final Comparator<User> byName = Comparator.comparing(User::getName);
     users.sort(byName);
   }
 
@@ -25,8 +26,8 @@ public final class SortingChoicesServiceHelper {
    * sort by name.
    * @param users represents users
    */
-  public static void sortByAge(List<UserClass> users) {
-    final Comparator<UserClass> byAge = Comparator.comparing(UserClass::getAge);
+  public static void sortByAge(List<User> users) {
+    final Comparator<User> byAge = Comparator.comparing(User::getAge);
     users.sort(byAge);
   }
 
@@ -34,8 +35,8 @@ public final class SortingChoicesServiceHelper {
    * sort by roll.
    * @param users represents users
    */
-  public static void sortByRoll(List<UserClass> users) {
-    final Comparator<UserClass> byRoll = Comparator.comparing(UserClass::getRoll);
+  public static void sortByRoll(List<User> users) {
+    final Comparator<User> byRoll = Comparator.comparing(User::getRoll);
     users.sort(byRoll);
   }
 }

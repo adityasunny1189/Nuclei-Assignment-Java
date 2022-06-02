@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * User class.
  */
-public class UserClass {
+public class User {
   /**
    * name field.
    */

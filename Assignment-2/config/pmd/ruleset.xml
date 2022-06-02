@@ -8,15 +8,14 @@
     <!-- Place to add your rules -->
     <rule ref="category/java/bestpractices.xml">
         <exclude name="JUnitTestsShouldIncludeAssert"/>
+        <exclude name="PreserveStackTrace"/>
         <exclude name="GuardLogStatement"/>
-        <exclude name="SystemPrintln" />
     </rule>
 
     <rule ref="category/java/codestyle.xml">
         <exclude name="AtLeastOneConstructor"/>
         <exclude name="OnlyOneReturn"/>
-        <exclude name="MethodArgumentCouldBeFinal"/>
-        <exclude name="LinguisticNaming"/>
+        <exclude name="UselessParentheses"/>
     </rule>
 
     <rule ref="category/java/design.xml">
@@ -24,23 +23,16 @@
         <exclude name="ExcessiveParameterList"/>
         <exclude name="DataClass"/>
         <exclude name="TooManyFields"/>
-        <exclude name="TooManyMethods"/>
         <exclude name="AvoidCatchingGenericException"/>
         <exclude name="ExcessiveImports"/>
     </rule>
 
-    <rule ref="category/java/documentation.xml">
-        <exclude name="CommentSize"/>
-    </rule>
-
     <rule ref="category/java/errorprone.xml">
         <exclude name="BeanMembersShouldSerialize"/>
-        <exclude name="MissingSerialVersionUID"/>
+        <exclude name="UseLocaleWithCaseConversions"/>
     </rule>
 
-    <rule ref="category/java/multithreading.xml">
-        <exclude name="DoNotUseThreads"/>
-    </rule>
+    <rule ref="category/java/multithreading.xml"/>
 
     <rule ref="category/java/performance.xml"/>
 
@@ -58,7 +50,7 @@
     </rule>
     <rule ref="category/java/codestyle.xml/ShortVariable">
         <properties>
-            <property name="minimum" value="2" />
+            <property name="minimum" value="2"/>
             <property name="xpath">
                 <value>
                     <![CDATA[//VariableDeclaratorId[string-length(@Image) < $minimum]]]>
@@ -74,7 +66,7 @@
 
     <rule ref="category/java/codestyle.xml/TooManyStaticImports">
         <properties>
-            <property name="maximumStaticImports" value="10"/>
+            <property name="maximumStaticImports" value="16"/>
         </properties>
     </rule>
 </ruleset>

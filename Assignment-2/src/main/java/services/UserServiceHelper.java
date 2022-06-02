@@ -3,11 +3,12 @@ package services;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+import models.DisplayConstants;
 
 /**
  * user service.
  */
-public final class UserServiceHelper {
+public class UserServiceHelper {
   private UserServiceHelper() {
 
   }
@@ -20,12 +21,12 @@ public final class UserServiceHelper {
   public static String getUserName(Scanner sc) {
     String name;
     while (true) {
-      System.out.print("Enter Name: ");
+      System.out.print(DisplayConstants.ENTER_NAME);
       name = sc.nextLine();
       if (ValidationServiceHelper.validateName(name)) {
         return name;
       } else {
-        System.out.println("Invalid Name");
+        System.out.println(DisplayConstants.INVALID_NAME);
       }
     }
   }
@@ -38,12 +39,12 @@ public final class UserServiceHelper {
   public static String getUserAddress(Scanner sc) {
     String address;
     while (true) {
-      System.out.print("Enter Address: ");
+      System.out.print(DisplayConstants.ENTER_ADDRESS);
       address = sc.nextLine();
       if (ValidationServiceHelper.validateAddress(address)) {
         return address;
       } else {
-        System.out.println("Invalid Address");
+        System.out.println(DisplayConstants.INVALID_ADDRESS);
       }
     }
   }
@@ -57,13 +58,13 @@ public final class UserServiceHelper {
     int age;
     while (true) {
       try {
-        System.out.print("Enter Age: ");
+        System.out.print(DisplayConstants.ENTER_AGE);
         age = sc.nextInt();
         if (ValidationServiceHelper.validateAge(age)) {
           return age;
         }
       } catch (InputMismatchException exception) {
-        System.out.println("Input type mismatch");
+        System.out.println(DisplayConstants.INPUT_TYPE_MISMATCH);
         sc.nextLine();
       }
     }
@@ -79,13 +80,13 @@ public final class UserServiceHelper {
     int roll;
     while (true) {
       try {
-        System.out.print("Enter Roll: ");
+        System.out.print(DisplayConstants.ENTER_ROLL_NO);
         roll = sc.nextInt();
         if (ValidationServiceHelper.validateRoll(rolls, roll)) {
           return roll;
         }
       } catch (InputMismatchException exception) {
-        System.out.println("Input type mismatch");
+        System.out.println(DisplayConstants.INPUT_TYPE_MISMATCH);
         sc.nextLine();
       }
     }
@@ -101,7 +102,7 @@ public final class UserServiceHelper {
     int index = 0;
     while (index != 4) {
       char ch;
-      System.out.print("Enter Course: ");
+      System.out.print(DisplayConstants.ENTER_COURSE);
       ch = sc.next().charAt(0);
       if (ValidationServiceHelper.validateCourse(ch)) {
         courses[index++] = ch;

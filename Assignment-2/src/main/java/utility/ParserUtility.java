@@ -8,13 +8,13 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-import models.UserClass;
+import models.User;
 
 /**
  * utility class.
  */
-public final class UtilityClassHelper {
-  private UtilityClassHelper() {
+public final class ParserUtility {
+  private ParserUtility() {
 
   }
 
@@ -23,23 +23,23 @@ public final class UtilityClassHelper {
    * @param jsonString represents json string
    *
    */
-  public static List<UserClass> decode(String jsonString) {
+  public static List<User> decode(String jsonString) {
     final Gson gson = new Gson();
-    final Type userListType = new TypeToken<ArrayList<UserClass>>() {
+    final Type userListType = new TypeToken<ArrayList<User>>() {
     }.getType();
     return gson.fromJson(jsonString, userListType);
   }
 
   /**
    * encode the objects to json.
-   * @param userClasses represents user object
+   * @param users represents user object
    *
    */
-  public static String encode(List<UserClass> userClasses) {
+  public static String encode(List<User> users) {
     final Gson gson = new GsonBuilder()
         .setPrettyPrinting()
         .create();
 
-    return gson.toJson(userClasses);
+    return gson.toJson(users);
   }
 }

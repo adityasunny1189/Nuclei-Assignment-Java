@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * validation service.
  */
-public final class ValidationServiceHelper {
+public class ValidationServiceHelper {
   private ValidationServiceHelper() {
 
   }

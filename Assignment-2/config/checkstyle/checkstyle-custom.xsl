@@ -1,34 +1,42 @@
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
+                xmlns:lxslt="http://xml.apache.org/xslt"
                 xmlns:redirect="http://xml.apache.org/xalan/redirect"
-                version="1.0"
                 extension-element-prefixes="redirect">
 
     <!--
      The Apache Software License, Version 1.1
+
      Copyright (c) 2002 The Apache Software Foundation.  All rights
      reserved.
+
      Redistribution and use in source and binary forms, with or without
      modification, are permitted provided that the following conditions
      are met:
+
      1. Redistributions of source code must retain the above copyright
         notice, this list of conditions and the following disclaimer.
+
      2. Redistributions in binary form must reproduce the above copyright
         notice, this list of conditions and the following disclaimer in
         the documentation and/or other materials provided with the
         distribution.
-     3. The end-userClass documentation included with the redistribution, if
+
+     3. The end-user documentation included with the redistribution, if
         any, must include the following acknowlegement:
            "This product includes software developed by the
             Apache Software Foundation (http://www.apache.org/)."
         Alternately, this acknowlegement may appear in the software itself,
         if and wherever such third-party acknowlegements normally appear.
+
      4. The names "The Jakarta Project", "Ant", and "Apache Software
         Foundation" must not be used to endorse or promote products derived
         from this software without prior written permission. For written
         permission, please contact apache@apache.org.
+
      5. Products derived from this software may not be called "Apache"
         nor may "Apache" appear in their names without prior written
         permission of the Apache Group.
+
      THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESSED OR IMPLIED
      WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
      OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -42,6 +50,7 @@
      OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
      SUCH DAMAGE.
      ====================================================================
+
      This software consists of voluntary contributions made by many
      individuals on behalf of the Apache Software Foundation.  For more
      information on the Apache Software Foundation, please see
@@ -49,7 +58,7 @@
      -->
 
     <xsl:output method="html" indent="yes" encoding="US-ASCII"/>
-    <xsl:decimal-format decimal-separator="." grouping-separator=","/>
+    <xsl:decimal-format decimal-separator="." grouping-separator="," />
 
     <xsl:param name="output.dir" select="'.'"/>
 
@@ -90,8 +99,7 @@
             <noframes>
                 <h2>Frame Alert</h2>
                 <p>
-                    This document is designed to be viewed using the frames feature. If you see this
-                    message, you are using a non-frame-capable web client.
+                    This document is designed to be viewed using the frames feature. If you see this message, you are using a non-frame-capable web client.
                 </p>
             </noframes>
         </html>
@@ -100,15 +108,10 @@
     <xsl:template name="pageHeader">
         <table border="0" cellpadding="0" cellspacing="0" width="100%">
             <tr>
-                <td class="text-align:right">
-                    <h2>CheckStyle Audit</h2>
-                </td>
+                <td class="text-align:right"><h2>CheckStyle Audit</h2></td>
             </tr>
             <tr>
-                <td class="text-align:right">Designed for use with <a
-                        href='http://checkstyle.sourceforge.net/'>CheckStyle
-                </a> and <a href='http://jakarta.apache.org'>Ant</a>.
-                </td>
+                <td class="text-align:right">Designed for use with <a href='http://checkstyle.sourceforge.net/'>CheckStyle</a> and <a href='http://jakarta.apache.org'>Ant</a>.</td>
             </tr>
         </table>
         <hr size="1"/>
@@ -204,9 +207,7 @@
             </head>
             <body>
                 <h2>Files</h2>
-                <p>
-                    <a href="overview-frame.html" target="fileFrame">Summary</a>
-                </p>
+                <p><a href="overview-frame.html" target="fileFrame">Summary</a></p>
                 <p>
                     <table width="100%">
                         <!-- For each file create its part -->
@@ -238,7 +239,7 @@
                 <xsl:with-param name="name" select="@name"/>
             </xsl:call-template>
         </xsl:variable>
-        <xsl:variable name="name" select="@name"/>
+        <xsl:variable name="name" select="@name" />
 
         <xsl:if test="$first = 'true'">
             <xsl:variable name="new-name">
@@ -247,7 +248,7 @@
                 </xsl:call-template>
             </xsl:variable>
             <tr>
-                <xsl:call-template name="alternated-row"/>
+                <xsl:call-template name="alternated-row" />
                 <td nowrap="nowrap">
                     <a>
                         <xsl:attribute name="href">
@@ -256,9 +257,7 @@
                         <xsl:value-of select="@name"/>
                     </a>
                 </td>
-                <td>
-                    <xsl:value-of select="count(../file[@name = $name]/error)"/>
-                </td>
+                <td><xsl:value-of select="count(../file[@name = $name]/error)"/></td>
             </tr>
         </xsl:if>
     </xsl:template>
@@ -298,9 +297,7 @@
         <xsl:if test="contains($path,'/')">
             <xsl:text>../</xsl:text>
             <xsl:call-template name="path">
-                <xsl:with-param name="path">
-                    <xsl:value-of select="substring-after($path,'/')"/>
-                </xsl:with-param>
+                <xsl:with-param name="path"><xsl:value-of select="substring-after($path,'/')"/></xsl:with-param>
             </xsl:call-template>
         </xsl:if>
         <xsl:if test="not(contains($path,'/')) and not($path = '')">
@@ -314,7 +311,7 @@
                 <xsl:with-param name="name" select="@name"/>
             </xsl:call-template>
         </xsl:variable>
-        <xsl:variable name="name" select="@name"/>
+        <xsl:variable name="name" select="@name" />
 
         <xsl:if test="$first = 'true'">
             <xsl:variable name="new-name">
@@ -326,19 +323,12 @@
                 <html>
                     <head>
                         <link rel="stylesheet" type="text/css">
-                            <xsl:attribute name="href">
-                                <xsl:call-template name="path">
-                                    <xsl:with-param name="path" select="$new-name"/>
-                                </xsl:call-template>
-                                <xsl:text>stylesheet.css</xsl:text>
-                            </xsl:attribute>
+                            <xsl:attribute name="href"><xsl:call-template name="path"><xsl:with-param name="path" select="$new-name"/></xsl:call-template><xsl:text>stylesheet.css</xsl:text></xsl:attribute>
                         </link>
                     </head>
                     <body>
                         <xsl:call-template name="pageHeader"/>
-                        <h3>File
-                            <xsl:value-of select="@name"/>
-                        </h3>
+                        <h3>File <xsl:value-of select="@name"/></h3>
                         <table class="log" border="0" cellpadding="5" cellspacing="2" width="100%">
                             <tr>
                                 <th>Error Description</th>
@@ -347,12 +337,8 @@
                             <xsl:for-each select="../file[@name = $name]/error">
                                 <tr>
                                     <xsl:call-template name="alternated-row"/>
-                                    <td>
-                                        <xsl:value-of select="@message"/>
-                                    </td>
-                                    <td>
-                                        <xsl:value-of select="@line"/>
-                                    </td>
+                                    <td><xsl:value-of select="@message"/></td>
+                                    <td><xsl:value-of select="@line"/></td>
                                 </tr>
                             </xsl:for-each>
                         </table>
@@ -373,12 +359,8 @@
             </tr>
             <tr>
                 <xsl:call-template name="alternated-row"/>
-                <td>
-                    <xsl:value-of select="$fileCount"/>
-                </td>
-                <td>
-                    <xsl:value-of select="$errorCount"/>
-                </td>
+                <td><xsl:value-of select="$fileCount"/></td>
+                <td><xsl:value-of select="$errorCount"/></td>
             </tr>
         </table>
     </xsl:template>

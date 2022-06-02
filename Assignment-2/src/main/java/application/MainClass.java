@@ -3,7 +3,7 @@ package application;
 /**
  * main class.
  */
-public final class MainClass {
+public class MainClass {
   private MainClass() {
 
   }

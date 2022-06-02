@@ -3,7 +3,7 @@ package models;
 /**
  * display class.
  */
-public final class DisplayHelper {
+public class DisplayConstants {
 
   /**
    * display details.
@@ -41,7 +41,42 @@ public final class DisplayHelper {
    */
   public static final String DISPLAY_USER_BY = "Display By \n1. Name\n2. Age\n3. Roll\nChoice: ";
 
-  private DisplayHelper() {
+  /**
+   * input type mismatch.
+   */
+  public static final String INPUT_TYPE_MISMATCH = "Input type mismatch";
+
+  /**
+   * enter age.
+   */
+  public static final String ENTER_AGE = "Enter Age: ";
+
+  /**
+   * enter course.
+   */
+  public static final String ENTER_COURSE = "Enter Course: ";
+
+  /**
+   * enter name.
+   */
+  public static final String ENTER_NAME = "Enter Name: ";
+
+  /**
+   * enter address.
+   */
+  public static final String ENTER_ADDRESS = "Enter Address: ";
+
+  /**
+   * invalid name.
+   */
+  public static final String INVALID_NAME = "Name Invalid";
+
+  /**
+   * invalid address.
+   */
+  public static final String INVALID_ADDRESS = "Invalid Address";
+
+  private DisplayConstants() {
 
   }
 }

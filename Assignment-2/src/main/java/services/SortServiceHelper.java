@@ -1,12 +1,14 @@
 package services;
 
 import java.util.List;
-import models.UserClass;
+
+import models.DisplayConstants;
+import models.User;
 
 /**
  * sorting service.
  */
-public final class SortServiceHelper {
+public class SortServiceHelper {
   private SortServiceHelper() {
 
   }
@@ -14,7 +16,7 @@ public final class SortServiceHelper {
   /**
    * sort users.
    */
-  public static void sort(int sortChoice, List<UserClass> users) {
+  public static void sort(int sortChoice, List<User> users) {
     switch (sortChoice) {
       case 1:
         SortingChoicesServiceHelper.sortByName(users);
@@ -26,7 +28,7 @@ public final class SortServiceHelper {
         SortingChoicesServiceHelper.sortByRoll(users);
         break;
       default:
-        System.out.println("Invalid Choice");
+        System.out.println(DisplayConstants.INVALID_CHOICE);
     }
   }
 }

@@ -3,14 +3,14 @@ package application;
 import java.util.List;
 import java.util.Scanner;
 
-import models.DisplayHelper;
-import models.UserClass;
+import models.DisplayConstants;
+import models.User;
 import services.ServicesHelper;
 
 /**
  * App class.
  */
-public final class AppClassHelper {
+public class AppClassHelper {
   private AppClassHelper() {
 
   }
@@ -21,15 +21,15 @@ public final class AppClassHelper {
   public static void startApp() {
     final String filePath = "users.json";
 
-    final List<UserClass> users = ServicesHelper.loadUsers(filePath);
+    final List<User> users = ServicesHelper.loadUsers(filePath);
 
     final List<Integer> rolls = ServicesHelper.loadRollNum(users);
 
     boolean flag = true;
     final Scanner sc = new Scanner(System.in);
-    while (flag) {
+    do {
       int choice;
-      System.out.print(DisplayHelper.DISPLAY_DETAILS);
+      System.out.print(DisplayConstants.DISPLAY_DETAILS);
       choice = sc.nextInt();
 
       switch (choice) {
@@ -53,8 +53,8 @@ public final class AppClassHelper {
           flag = false;
           break;
         default:
-          System.out.println(DisplayHelper.INVALID_CHOICE);
+          System.out.println(DisplayConstants.INVALID_CHOICE);
       }
-    }
+    } while (flag);
   }
 }
