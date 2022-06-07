@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package pb.user;
+
+option java_package = "com.pb.user";
+option java_multiple_files = true;
+
+message User {
+  string name = 1;
+  uint32 age = 2;
+  string address = 3;
+  uint32 roll = 4;
+  repeated string courses = 5;
+}

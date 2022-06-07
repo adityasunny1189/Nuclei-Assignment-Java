@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Aditya Pathak",
+    "age": 22,
+    "address": "SIT back gate extension road Tumkur 572103",
+    "roll": 3,
+    "courses": [
+      "A",
+      "E",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "name": "Amit Shahwal",
+    "age": 22,
+    "address": "SIT basaveshwara hostel Tumkur 572103",
+    "roll": 63,
+    "courses": [
+      "E",
+      "C",
+      "D",
+      "F"
+    ]
+  },
+  {
+    "name": "Kunal Pandey",
+    "age": 24,
+    "address": "Patna Bihar",
+    "roll": 21,
+    "courses": [
+      "E",
+      "C",
+      "F",
+      "D"
+    ]
+  },
+  {
+    "name": "Adarsh Shukla",
+    "age": 29,
+    "address": "Gorakhpur Uttar Pradesh",
+    "roll": 2,
+    "courses": [
+      "E",
+      "D",
+      "C",
+      "B"
+    ]
+  },
+  {
+    "name": "Tushar Rajput",
+    "age": 20,
+    "address": "Patna Bihar",
+    "roll": 44,
+    "courses": [
+      "E",
+      "C",
+      "D",
+      "F"
+    ]
+  }
+]
