@@ -28,8 +28,7 @@ public class ServicesHelper {
    */
   public static List<User> loadUsers(String filePath) {
     List<User> users = new ArrayList<>();
-    try {
-      final FileReader reader = new FileReader(filePath);
+    try (final FileReader reader = new FileReader(filePath)) {
       int index;
       final StringBuilder jsonString = new StringBuilder();
       index = reader.read();
@@ -38,7 +37,6 @@ public class ServicesHelper {
         index = reader.read();
       }
       users = ParserUtility.decode(jsonString.toString());
-      reader.close();
     } catch (IOException exception) {
       System.out.println("error" + exception);
     }
@@ -65,8 +63,7 @@ public class ServicesHelper {
    */
   public static void saveDetails(List<User> users, String filePath) {
     final String json = ParserUtility.encode(users);
-    try {
-      final FileWriter file = new FileWriter(filePath);
+    try (final FileWriter file = new FileWriter(filePath)) {
       file.write(json);
       file.flush();
     } catch (IOException exception) {
@@ -91,7 +88,7 @@ public class ServicesHelper {
     int sortChoice;
     System.out.print(DisplayConstants.DISPLAY_USER_BY);
     sortChoice = sc.nextInt();
-    SortServiceHelper.sort(sortChoice, users);
+    users = SortServiceHelper.sort(sortChoice, users);
     System.out.print(DisplayConstants.USER_DETAIL_HEADER);
     for (final User user : users) {
       System.out.printf(DisplayConstants.USER_DETAILS,

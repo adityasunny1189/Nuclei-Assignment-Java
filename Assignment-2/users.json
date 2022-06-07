@@ -46,5 +46,17 @@
       "C",
       "B"
     ]
+  },
+  {
+    "name": "Tushar Rajput",
+    "age": 20,
+    "address": "Patna Bihar",
+    "roll": 44,
+    "courses": [
+      "E",
+      "C",
+      "D",
+      "F"
+    ]
   }
 ]

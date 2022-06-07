@@ -16,19 +16,17 @@ public class SortServiceHelper {
   /**
    * sort users.
    */
-  public static void sort(int sortChoice, List<User> users) {
+  public static List<User> sort(int sortChoice, List<User> users) {
     switch (sortChoice) {
       case 1:
-        SortingChoicesServiceHelper.sortByName(users);
-        break;
+        return SortingChoicesServiceHelper.sortByName(users);
       case 2:
-        SortingChoicesServiceHelper.sortByAge(users);
-        break;
+        return SortingChoicesServiceHelper.sortByAge(users);
       case 3:
-        SortingChoicesServiceHelper.sortByRoll(users);
-        break;
+        return SortingChoicesServiceHelper.sortByRoll(users);
       default:
         System.out.println(DisplayConstants.INVALID_CHOICE);
+        return users;
     }
   }
 }
